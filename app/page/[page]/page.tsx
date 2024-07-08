@@ -1,10 +1,15 @@
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { Fragment } from "react";
 import SurahTitle from "@/components/readingPage/SurahTitle";
 import PageNavigate from "@/components/readingPage/PageNavigate";
 import PageNumber from "@/components/readingPage/PageNumber";
 import SaveBookmark from "@/components/readingPage/SaveBookmark";
 import { removeTashkeel } from "@/lib/utils";
+
+type Params = {
+  params: {
+    page: string;
+  };
+};
 
 type AyahProps = {
   text: string;
