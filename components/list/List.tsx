@@ -13,7 +13,7 @@ import Bookmark from "./bookmark/Bookmark";
 import { useSearchParams } from "next/navigation";
 import { surahs, juzs } from "@/data/data";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 
 export default function List({
   container = true,
@@ -30,7 +30,7 @@ export default function List({
 
   const sheetCloseRef = useRef<HTMLButtonElement>(null);
 
-  const data = () => {
+  const Data = () => {
     switch (currentFilter) {
       case "سور":
         if (searchParams.get("search"))
@@ -104,7 +104,9 @@ export default function List({
           <div
             className={`grid h-full flex-1 grid-cols-1 place-content-start gap-3 rounded-t-lg bg-navy scrollbar-thin`}
           >
-            {data()}
+            <Suspense>
+              <Data />
+            </Suspense>
           </div>
         </div>
       </SheetContent>
@@ -124,7 +126,9 @@ export default function List({
         <div
           className={`grid h-full flex-1 grid-cols-1 place-content-start gap-2 rounded-t-lg bg-navy p-2 scrollbar-thin sm:grid-cols-2 sm:gap-5 sm:p-5 md:grid-cols-3`}
         >
-          {data()}
+          <Suspense>
+            <Data />
+          </Suspense>
         </div>
       </div>
     </section>
