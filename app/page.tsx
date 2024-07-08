@@ -1,5 +1,10 @@
 import List from "@/components/list/List";
+import { Suspense } from "react";
 
 export default function Home() {
-  return <List />;
+  return (
+    <Suspense>
+      <List />
+    </Suspense>
+  );
 }

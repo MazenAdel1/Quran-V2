@@ -39,7 +39,6 @@ export default function List({
               {
                 return (
                   <SurahButton
-                    key={surah.id}
                     {...surah}
                     {...surahButtonProps}
                     onClick={() => sheetCloseRef.current?.click()}
@@ -104,9 +103,7 @@ export default function List({
           <div
             className={`grid h-full flex-1 grid-cols-1 place-content-start gap-3 rounded-t-lg bg-navy scrollbar-thin`}
           >
-            <Suspense>
-              <Data />
-            </Suspense>
+            <Data />
           </div>
         </div>
       </SheetContent>
@@ -119,6 +116,7 @@ export default function List({
         className={`flex flex-col items-center gap-3 sm:h-10 sm:flex-row ${currentFilter == "سور" ? "justify-between" : "justify-end pt-[52px] sm:pt-0"}`}
       >
         <Search />
+
         <Filter fullWidth={false} />
       </div>
       <div className="relative flex h-max flex-col gap-3 lg:block">
@@ -126,9 +124,7 @@ export default function List({
         <div
           className={`grid h-full flex-1 grid-cols-1 place-content-start gap-2 rounded-t-lg bg-navy p-2 scrollbar-thin sm:grid-cols-2 sm:gap-5 sm:p-5 md:grid-cols-3`}
         >
-          <Suspense>
-            <Data />
-          </Suspense>
+          <Data />
         </div>
       </div>
     </section>
