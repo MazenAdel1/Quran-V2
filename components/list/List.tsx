@@ -13,7 +13,7 @@ import Bookmark from "./bookmark/Bookmark";
 import { useSearchParams } from "next/navigation";
 import { surahs, juzs } from "@/data/data";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
-import { Suspense, useRef } from "react";
+import { useMemo, useRef } from "react";
 
 export default function List({
   container = true,
@@ -23,22 +23,23 @@ export default function List({
   sheetTriggerIcon,
 }: ListProps) {
   const filters = useAppSelector((state) => state.filter.value);
-  const currentFilter = filters.filter(({ title, active }) => active)[0].title;
+  const currentFilter = filters.filter(({ active }) => active)[0].id;
 
   const bookmarks = useAppSelector((state) => state.bookmarks.value);
   const searchParams = useSearchParams();
 
   const sheetCloseRef = useRef<HTMLButtonElement>(null);
 
-  const Data = () => {
+  const Data = useMemo(() => {
     switch (currentFilter) {
-      case "سور":
+      case "surahs":
         if (searchParams.get("search"))
           return surahs.map((surah) => {
             if (surah.title.includes(searchParams.get("search") as string)) {
               {
                 return (
                   <SurahButton
+                    key={surah.id}
                     {...surah}
                     {...surahButtonProps}
                     onClick={() => sheetCloseRef.current?.click()}
@@ -55,7 +56,7 @@ export default function List({
             onClick={() => sheetCloseRef.current?.click()}
           />
         ));
-      case "أجزاء":
+      case "juzs":
         return juzs.map((juz) => (
           <Link
             key={juz.id}
@@ -72,16 +73,24 @@ export default function List({
             {juz.title}
           </Link>
         ));
-      case "مرجعيات":
-        return bookmarks.map((bookmark) => (
-          <Bookmark
-            key={bookmark.page}
-            page={bookmark.page}
-            onClick={() => sheetCloseRef.current?.click()}
-          />
-        ));
+      case "bookmarks":
+        return bookmarks.length ? (
+          bookmarks.map((bookmark) => (
+            <Bookmark
+              key={bookmark.page}
+              page={bookmark.page}
+              onClick={() => sheetCloseRef.current?.click()}
+            />
+          ))
+        ) : (
+          <h2
+            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 ${sheet ? "text-2xl" : "text-3xl"} text-white`}
+          >
+            ليس لديك مرجعيات
+          </h2>
+        );
     }
-  };
+  }, [bookmarks, currentFilter, searchParams, sheet, surahButtonProps]);
 
   return sheet ? (
     <Sheet>
@@ -101,9 +110,9 @@ export default function List({
         </div>
         <div className="relative flex h-max flex-col gap-3 lg:block">
           <div
-            className={`grid h-full flex-1 grid-cols-1 place-content-start gap-3 rounded-t-lg bg-navy scrollbar-thin`}
+            className={`grid min-h-20 flex-1 grid-cols-1 place-content-start gap-3 rounded-t-lg bg-navy scrollbar-thin`}
           >
-            <Data />
+            {Data}
           </div>
         </div>
       </SheetContent>
@@ -113,7 +122,7 @@ export default function List({
       className={`${container ? "container lg:w-[70%] xl:w-[60%]" : ""} flex h-full flex-col gap-3 `}
     >
       <div
-        className={`flex flex-col items-center gap-3 sm:h-10 sm:flex-row ${currentFilter == "سور" ? "justify-between" : "justify-end pt-[52px] sm:pt-0"}`}
+        className={`flex flex-col items-center gap-3 sm:h-10 sm:flex-row ${currentFilter == "surahs" ? "justify-between" : "justify-end pt-[52px] sm:pt-0"}`}
       >
         <Search />
 
@@ -122,9 +131,9 @@ export default function List({
       <div className="relative flex h-max flex-col gap-3 lg:block">
         <SectionNavigation />
         <div
-          className={`grid h-full flex-1 grid-cols-1 place-content-start gap-2 rounded-t-lg bg-navy p-2 scrollbar-thin sm:grid-cols-2 sm:gap-5 sm:p-5 md:grid-cols-3`}
+          className={`relative grid min-h-20 flex-1 grid-cols-1 place-content-start gap-2 rounded-t-lg bg-navy p-2 scrollbar-thin sm:grid-cols-2 sm:gap-5 sm:p-5 md:grid-cols-3`}
         >
-          <Data />
+          {Data}
         </div>
       </div>
     </section>
