@@ -9,9 +9,9 @@ export default function Filter({ fullWidth }: { fullWidth: boolean }) {
     <div
       className={`flex ${fullWidth ? "w-full" : "w-full sm:w-auto"} h-10 items-center gap-1`}
     >
-      {filter.map(({ title, active }) => (
+      {filter.map(({ id, title, active }) => (
         <Button
-          key={title}
+          key={id}
           variant="orange"
           size="full"
           rounded="pill"
@@ -20,7 +20,7 @@ export default function Filter({ fullWidth }: { fullWidth: boolean }) {
               changeFilter(
                 filter.map((item) => ({
                   ...item,
-                  active: item.title === title,
+                  active: item.id === id,
                 })),
               ),
             )

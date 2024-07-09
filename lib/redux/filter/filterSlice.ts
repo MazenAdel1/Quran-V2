@@ -1,15 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-export type FilterProps = "سور" | "أجزاء" | "مرجعيات";
+type FilterProps = {
+  id: "surahs" | "juzs" | "bookmarks";
+  title: "سور" | "أجزاء" | "مرجعيات";
+};
 
-type Props = { title: FilterProps; active: boolean }[];
+type Props = {
+  id: FilterProps["id"];
+  title: FilterProps["title"];
+  active: boolean;
+}[];
 
 const initialState: { value: Props } = {
   value: [
-    { title: "سور", active: true },
-    { title: "أجزاء", active: false },
-    { title: "مرجعيات", active: false },
+    { id: "surahs", title: "سور", active: true },
+    { id: "juzs", title: "أجزاء", active: false },
+    { id: "bookmarks", title: "مرجعيات", active: false },
   ],
 };
 
