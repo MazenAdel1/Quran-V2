@@ -24,16 +24,16 @@ type AyahProps = {
 
 export default async function Page({ params }: Params) {
   const page = +params.page;
-  const res = await fetch(`https://api.alquran.cloud/v1/page/${page}`);
-  const data = await res.json();
-  const ayahs = data.data.ayahs;
-  const surahsNames = Object.values(data.data.surahs).map(
-    (surah: any) => surah.name.split("سُورَةُ ")[1],
-  );
+  if (page >= 1 && page <= 604) {
+    const res = await fetch(`https://api.alquran.cloud/v1/page/${page}`);
+    const data = await res.json();
+    const ayahs = data.data.ayahs;
+    const surahsNames = Object.values(data.data.surahs).map(
+      (surah: any) => surah.name.split("سُورَةُ ")[1],
+    );
 
-  return (
-    <>
-      {page >= 1 && page <= 604 ? (
+    return (
+      <>
         <div className="container flex h-[inherit] flex-col gap-10">
           <SaveBookmark page={page} />
           <span className="absolute left-28 top-6 block text-sm text-white sm:left-36 sm:top-8 sm:text-lg">
@@ -81,11 +81,13 @@ export default async function Page({ params }: Params) {
             <PageNavigate href={`/page/${page + 1}`} direction={"left"} />
           )}
         </div>
-      ) : (
-        <h1 className="text-center text-3xl font-bold text-white">
-          هذه الصفحة ليست موجودة
-        </h1>
-      )}
-    </>
+      </>
+    );
+  }
+
+  return (
+    <h1 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold text-white">
+      هذه الصفحة ليست موجودة ، اختر صفحة بين 1 و 604
+    </h1>
   );
 }
