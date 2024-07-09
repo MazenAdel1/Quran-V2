@@ -14,7 +14,7 @@ export default function Search() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const filters = useAppSelector((state) => state.filter.value);
-  const currentFilter = filters.filter(({ title, active }) => active)[0].title;
+  const currentFilter = filters.filter(({ active }) => active)[0].id;
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -35,9 +35,9 @@ export default function Search() {
   };
 
   return (
-    currentFilter == "سور" && (
+    currentFilter == "surahs" && (
       <form
-        className="flex h-fit w-full basis-full items-center gap-2"
+        className="flex h-fit w-full items-center gap-2"
         onSubmit={handleSubmit}
       >
         <Button
