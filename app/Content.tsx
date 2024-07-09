@@ -38,7 +38,7 @@ export default function Content({
   const paddingTop = isScrolled ? `${headerHeight + 32}px` : "0";
 
   return (
-    <body className="flex min-h-dvh flex-col gap-8 overflow-x-hidden bg-dark-navy font-camel">
+    <body className="relative flex min-h-dvh flex-col gap-8 overflow-x-hidden bg-dark-navy font-camel">
       <Glow />
       <Header fixed={isScrolled} ref={headerRef} />
       <div className={`flex flex-1`} style={{ paddingTop: paddingTop }}>
