@@ -46,7 +46,7 @@ export default function SaveBookmark({ page }: { page: number }) {
   return (
     <button
       onClick={handleClick}
-      className="absolute left-2 top-20 h-6 w-6 sm:left-6 sm:top-24"
+      className="absolute left-3 top-20 h-6 w-6 sm:left-6 sm:top-24"
     >
       <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path
