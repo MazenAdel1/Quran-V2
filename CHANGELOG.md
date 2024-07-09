@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.6...v0.1.7) (2024-07-09)
+
+
+### Bug Fixes
+
+* fix google chrome mobile styles ([7c59343](https://github.com/USERNAME/REPOSITORY_NAME/commits7c5934342a38bd69d6e63c09d79e9195847c5156))
+
 ### [0.1.6](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.5...v0.1.6) (2024-07-09)
 
 
