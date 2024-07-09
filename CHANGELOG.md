@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.5...v0.1.6) (2024-07-09)
+
+
+### Bug Fixes
+
+* fix bookmarks empty UI ([2e0d806](https://github.com/USERNAME/REPOSITORY_NAME/commits2e0d806d1522badafa9dffa428257f6f50bfad81))
+
 ### [0.1.5](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.4...v0.1.5) (2024-07-09)
 
 ### [0.1.4](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.3...v0.1.4) (2024-07-09)
