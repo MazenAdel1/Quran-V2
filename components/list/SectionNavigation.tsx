@@ -49,7 +49,7 @@ export default function SectionNavigation() {
               <Link
                 href={"/"}
                 key={section.title}
-                className={`relative block size-full flex-1 py-1 text-center text-xl text-white transition hover:bg-navy  ${!section.available ? "before:absolute before:left-0 before:top-0 before:h-full before:w-full before:bg-black/40" : ""}`}
+                className={`relative block size-full flex-1 py-1 text-center text-xl text-white transition hover:bg-navy  ${!section.available ? "pointer-events-none text-white before:absolute before:left-0 before:top-0 before:flex before:h-full before:w-full before:items-center before:justify-center before:bg-black/40 before:text-base before:content-['...تحت_التطوير']" : ""}`}
               >
                 {section.title}
               </Link>
