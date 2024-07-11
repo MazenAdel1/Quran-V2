@@ -20,7 +20,7 @@ export default function PageNavigate({
           variant: "navy",
           padding: "md",
           rounded: "md",
-          className: `fixed ${`${direction}-0`} top-1/2 -translate-y-1/2 ${direction == "left" ? `rounded-l-none` : "rounded-r-none"} px-1 `,
+          className: `fixed ${`${direction}-0`} top-1/2 -translate-y-1/2 ${direction == "left" ? `rounded-l-none` : "rounded-r-none"} px-1 opacity-65 transition-opacity hover:opacity-100`,
         }),
       )}
     >
