@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.7...v0.1.8) (2024-07-11)
+
+
+### Features
+
+* add new screen size "xs" ([fcdcfab](https://github.com/USERNAME/REPOSITORY_NAME/commitsfcdcfabd5938bbbee44c21b4d358897f182e4499))
+* make layout glow fixed ([574000a](https://github.com/USERNAME/REPOSITORY_NAME/commits574000a140107bbdb0db7bf6f0f6d01f50f153bb))
+
+
+### Bug Fixes
+
+* fix border radius issue in left button ([a2b18d9](https://github.com/USERNAME/REPOSITORY_NAME/commitsa2b18d91a574fde3a5931cd353806cbe67c9943d))
+* fix scroll bug in reading page ([69d16dc](https://github.com/USERNAME/REPOSITORY_NAME/commits69d16dc8a01d4ef576043fc4b3852a34e636a6b1))
+* handle wrong page error & fetch errors ([12acb57](https://github.com/USERNAME/REPOSITORY_NAME/commits12acb579f3e1ea3c55e19a8b5d8f0d2f7d7e3289))
+
+
+### Refactor
+
+* decrease PageNumber size & change number position depend on page number ([df414b9](https://github.com/USERNAME/REPOSITORY_NAME/commitsdf414b9827a5cd8b8af1a5c50033223f13cd4e42))
+* decrease SurahTitle size ([d96d270](https://github.com/USERNAME/REPOSITORY_NAME/commitsd96d270cd213fb52ddb3cbfdfb64cef374d7d279))
+* move to top a little ([041047d](https://github.com/USERNAME/REPOSITORY_NAME/commits041047d080a91b1444a651d714af2790331a2753))
+* separate Ayahs to an independent component ([e3ad608](https://github.com/USERNAME/REPOSITORY_NAME/commitse3ad608c4186e244b9b49eb4aecb0a0c2d6b1c1d))
+
 ### [0.1.7](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.6...v0.1.7) (2024-07-09)
 
 
