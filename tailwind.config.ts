@@ -12,12 +12,16 @@ const config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
         "2xl": "1400px",
       },
     },
     extend: {
+      screens: {
+        xs: "450px",
+        "2xl": "1400px",
+      },
       fontFamily: {
         camel: "camel",
         amiri: "amiri",
