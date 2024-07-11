@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.8...v0.1.9) (2024-07-11)
+
+
+### Bug Fixes
+
+* fix overflow doesn't be hidden on sheet open ([3b66739](https://github.com/USERNAME/REPOSITORY_NAME/commits3b667397ae11d2bc02656569493b48cdce5d1273))
+
+
+### Refactor
+
+* decrease pageNavigate opacity and increase on hover ([ebde38a](https://github.com/USERNAME/REPOSITORY_NAME/commitsebde38aa66ec57c7e8c41e8ced47e22c7189142f))
+
 ### [0.1.8](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.7...v0.1.8) (2024-07-11)
 
 
