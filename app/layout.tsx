@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="rtl" className="overflow-x-hidden">
+    <html lang="en" dir="rtl">
       <StoreProvider>
         <Content>{children}</Content>
       </StoreProvider>
