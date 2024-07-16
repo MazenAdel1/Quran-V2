@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.9...v0.1.10) (2024-07-16)
+
+
+### Bug Fixes
+
+* reverse bookmarks so that new will be first ([ea22b9d](https://github.com/USERNAME/REPOSITORY_NAME/commitsea22b9d32a8f0860b8688fdc0cdb7d3dd950e435))
+
 ### [0.1.9](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.8...v0.1.9) (2024-07-11)
 
 
