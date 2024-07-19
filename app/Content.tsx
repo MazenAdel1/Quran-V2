@@ -3,7 +3,7 @@
 import Glow from "@/components/layout/Glow";
 import Header from "@/components/header/Header";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { verses } from "@/data/ayahs";
+// import { verses } from "@/data/ayahs";
 
 export default function Content({
   children,
