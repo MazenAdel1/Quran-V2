@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.9...v0.2.0) (2024-07-19)
+
+
+### Features
+
+* aDD THEMES (dark mode - light mode) ([c03879d](https://github.com/USERNAME/REPOSITORY_NAME/commitsc03879d2edaaddc2b0939cd259dc15332f6bac6d))
+
+
+### Bug Fixes
+
+* reverse bookmarks so that new will be first ([ea22b9d](https://github.com/USERNAME/REPOSITORY_NAME/commitsea22b9d32a8f0860b8688fdc0cdb7d3dd950e435))
+
+
+### Refactor
+
+* move html element to Content ([29942bc](https://github.com/USERNAME/REPOSITORY_NAME/commits29942bcc359280e7fe8813937e3df1fe452c9d67))
+* use svg element instead of Image ([5b39ca6](https://github.com/USERNAME/REPOSITORY_NAME/commits5b39ca6d79a17c984bac5c9b0c2091cb4e1943f2))
+
 ### [0.1.10](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.1.9...v0.1.10) (2024-07-16)
 
 
