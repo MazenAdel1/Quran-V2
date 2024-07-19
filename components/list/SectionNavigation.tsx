@@ -41,7 +41,7 @@ export default function SectionNavigation() {
           ))}
         </ul>
         <Select>
-          <SelectTrigger className="w-36 bg-light-navy text-white lg:hidden">
+          <SelectTrigger className="w-36 bg-light-orange text-black dark:bg-light-navy dark:text-white lg:hidden">
             <SelectValue placeholder="الأقسام" />
           </SelectTrigger>
           <SelectContent className="flex flex-col items-center justify-center bg-light-navy">
@@ -49,7 +49,7 @@ export default function SectionNavigation() {
               <Link
                 href={"/"}
                 key={section.title}
-                className={`relative block size-full flex-1 py-1 text-center text-xl text-white transition hover:bg-navy  ${!section.available ? "pointer-events-none text-white before:absolute before:left-0 before:top-0 before:flex before:h-full before:w-full before:items-center before:justify-center before:bg-black/40 before:text-base before:content-['...تحت_التطوير']" : ""}`}
+                className={`relative block size-full flex-1 py-1 text-center text-xl text-black transition hover:bg-[#ffb777] dark:text-white dark:hover:bg-navy  ${!section.available ? "pointer-events-none text-white before:absolute before:left-0 before:top-0 before:flex before:h-full before:w-full before:items-center before:justify-center before:bg-black/40 before:text-base before:content-['...تحت_التطوير']" : ""}`}
               >
                 {section.title}
               </Link>
