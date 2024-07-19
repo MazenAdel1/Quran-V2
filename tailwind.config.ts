@@ -27,7 +27,7 @@ const config = {
         amiri: "amiri",
       },
       colors: {
-        "primary-white": "#e9eaec",
+        white: "#e9eaec",
         "dark-navy": "#0e1420",
         navy: "#121C34",
         "light-navy": "#1B2B52",
@@ -35,8 +35,12 @@ const config = {
         "dark-orange": "#CE690C",
         secondary: "#e1e0d6",
         accent: "#f06542",
+        "light-white": "#FFF7F0",
+        "light-orange": "#EFDCCB",
+        "light-dark-orange": "#FBC494",
       },
       backgroundColor: {
+        white: "#e9eaec",
         "dark-navy": "#0e1420",
         navy: "#121C34",
         "light-navy": "#1B2B52",
@@ -44,6 +48,9 @@ const config = {
         "dark-orange": "#CE690C",
         secondary: "#e1e0d6",
         accent: "#f06542",
+        "light-white": "#FFF7F0",
+        "light-orange": "#EFDCCB",
+        "light-dark-orange": "#FBC494",
       },
       keyframes: {
         "accordion-down": {

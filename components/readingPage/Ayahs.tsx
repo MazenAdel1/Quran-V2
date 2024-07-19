@@ -20,7 +20,7 @@ export default function Ayahs({ ayahs, page }: any) {
   return (
     <div
       ref={containerRef}
-      className="xs:text-[22px] xs:leading-[2.6] h-full w-full overflow-hidden font-amiri text-[20px] leading-[2.4] text-white sm:text-[24px] sm:leading-[2.7] md:text-[26px] md:leading-[2.6] lg:text-[29px] lg:leading-[2.9] xl:text-[32px] xl:leading-[3]"
+      className="h-full w-full overflow-hidden font-amiri text-[20px] leading-[2.4] text-black dark:text-white xs:text-[22px] xs:leading-[2.6] sm:text-[24px] sm:leading-[2.7] md:text-[26px] md:leading-[2.6] lg:text-[29px] lg:leading-[2.9] xl:text-[32px] xl:leading-[3]"
     >
       {ayahs.map((ayah: AyahProps) =>
         ayah.numberInSurah === 1 ? (

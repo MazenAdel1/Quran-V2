@@ -4,6 +4,7 @@ import SaveBookmark from "@/components/readingPage/SaveBookmark";
 import { removeTashkeel } from "@/lib/utils";
 import Ayahs from "@/components/readingPage/Ayahs";
 import { Suspense } from "react";
+// import { verses } from "@/data/ayahs";
 
 type Params = {
   params: {
@@ -17,6 +18,7 @@ export default async function Page({ params }: Params) {
     try {
       const res = await fetch(`https://api.alquran.cloud/v1/page/${page}`);
       const data = await res.json();
+      // const data = verses[page - 1];
       const ayahs = data.data.ayahs;
       const surahsNames = Object.values(data.data.surahs).map(
         (surah: any) => surah.name.split("سُورَةُ ")[1],
@@ -26,7 +28,7 @@ export default async function Page({ params }: Params) {
         <>
           <div className="container flex h-[inherit] flex-col gap-8">
             <SaveBookmark page={page} />
-            <span className="absolute left-28 top-6 block text-sm text-white sm:left-36 sm:top-8 sm:text-lg">
+            <span className="absolute left-28 top-6 block text-sm text-black dark:text-white sm:left-36 sm:top-8 sm:text-lg">
               {surahsNames.map(
                 (surahName, index) =>
                   removeTashkeel(surahName) +

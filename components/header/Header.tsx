@@ -22,7 +22,12 @@ const Header = forwardRef<HTMLDivElement, { fixed: boolean }>(
             <List
               sheet
               surahButtonProps={{ idExist: false, versesCountExist: false }}
-              sheetTriggerIcon={<BookOpen color="white" size={"2rem"} />}
+              sheetTriggerIcon={
+                <BookOpen
+                  className="text-black dark:text-white"
+                  size={"2rem"}
+                />
+              }
               filterAndSearchLayout="col"
             />
           )}

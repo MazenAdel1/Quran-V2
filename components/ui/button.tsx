@@ -20,7 +20,7 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-slate-50",
         link: "text-slate-900 underline-offset-4 hover:underline dark:text-slate-50",
-        navy: "bg-light-navy text-white hover:bg-[#243664] ",
+        navy: "dark:bg-light-navy dark:text-white dark:hover:bg-[#243664] bg-light-dark-orange text-black hover:bg-[#ffb777]",
         orange: "bg-orange text-black hover:bg-[#eb8425]",
         white: "bg-[#F0F0F0] text-black hover:bg-[#d6d6d6] ",
         black: "bg-[#101010] text-white hover:bg-[#1d1d1d] ",
@@ -43,9 +43,9 @@ const buttonVariants = cva(
       },
       effect: {
         "solid-shadow-black":
-          "shadow-[3px_3px_0_0_black] hover:shadow-[0_0_0_0_black]",
+          "dark:shadow-[3px_3px_0_0_black] dark:hover:shadow-[0_0_0_0_black] shadow-[3px_3px_0_0_white] hover:shadow-[0_0_0_0_white]",
         "solid-shadow-white":
-          "shadow-[3px_3px_0_0_white] hover:shadow-[0_0_0_0_white]",
+          "dark:shadow-[3px_3px_0_0_white] dark:hover:shadow-[0_0_0_0_white] shadow-[3px_3px_0_0_black] hover:shadow-[0_0_0_0_black]",
       },
     },
     defaultVariants: {
