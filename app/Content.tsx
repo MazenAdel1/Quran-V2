@@ -2,7 +2,8 @@
 
 import Glow from "@/components/layout/Glow";
 import Header from "@/components/header/Header";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { verses } from "@/data/ayahs";
 
 export default function Content({
   children,
@@ -12,6 +13,7 @@ export default function Content({
   const [isScrolled, setIsScrolled] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(0);
   const headerRef = useRef<HTMLDivElement>(null);
+  const htmlRef = useRef<HTMLHtmlElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,15 +37,39 @@ export default function Content({
     };
   }, [headerHeight]);
 
+  useLayoutEffect(() => {
+    localStorage && localStorage.getItem("theme")
+      ? (htmlRef.current?.classList.add(
+          "dark",
+          "scrollbar-track-light-navy",
+          "scrollbar-thumb-white",
+        ),
+        htmlRef.current?.classList.remove(
+          "scrollbar-track-light-white",
+          "scrollbar-thumb-black",
+        ))
+      : (htmlRef.current?.classList.remove(
+          "dark",
+          "scrollbar-track-light-navy",
+          "scrollbar-thumb-white",
+        ),
+        htmlRef.current?.classList.add(
+          "scrollbar-track-light-white",
+          "scrollbar-thumb-black",
+        ));
+  }, []);
+
   const paddingTop = isScrolled ? `${headerHeight + 32}px` : "0";
 
   return (
-    <body className="relative flex min-h-dvh flex-col gap-8 overflow-x-hidden bg-dark-navy font-camel">
-      <Glow />
-      <Header fixed={isScrolled} ref={headerRef} />
-      <div className={`flex flex-1`} style={{ paddingTop: paddingTop }}>
-        {children}
-      </div>
-    </body>
+    <html lang="en" dir="rtl" className="dark scrollbar" ref={htmlRef}>
+      <body className="relative flex min-h-dvh flex-col gap-8 overflow-x-hidden bg-light-white font-camel dark:bg-dark-navy">
+        <Glow />
+        <Header fixed={isScrolled} ref={headerRef} />
+        <div className={`flex flex-1`} style={{ paddingTop: paddingTop }}>
+          {children}
+        </div>
+      </body>
+    </html>
   );
 }
