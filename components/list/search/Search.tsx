@@ -35,7 +35,7 @@ export default function Search() {
   };
 
   return (
-    currentFilter == "surahs" && (
+    currentFilter == "chapters" && (
       <form
         className="flex h-fit w-full items-center gap-2"
         onSubmit={handleSubmit}

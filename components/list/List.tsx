@@ -4,21 +4,22 @@ import { ListProps } from "@/types/ListTypes";
 import Filter from "./filter/Filter";
 import SectionNavigation from "./SectionNavigation";
 import Search from "./search/Search";
-import SurahButton from "@/components/list/SurahButton";
+import ChapterButton from "@/components/list/ChapterButton";
 import { buttonVariants } from "../ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useAppSelector } from "@/lib/redux/hooks";
 import Bookmark from "./bookmark/Bookmark";
 import { useSearchParams } from "next/navigation";
-import { surahs, juzs } from "@/data/data";
+import chapters from "@/data/chapters.json";
+import juzs from "@/data/juzs.json";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 import { useMemo, useRef } from "react";
 
 export default function List({
   container = true,
   filterAndSearchLayout = "row",
-  surahButtonProps,
+  chapterButtonProps,
   sheet = false,
   sheetTriggerIcon,
 }: ListProps) {
@@ -32,27 +33,27 @@ export default function List({
 
   const Data = useMemo(() => {
     switch (currentFilter) {
-      case "surahs":
+      case "chapters":
         if (searchParams.get("search"))
-          return surahs.map((surah) => {
-            if (surah.title.includes(searchParams.get("search") as string)) {
+          return chapters.map((chapter) => {
+            if (chapter.title.includes(searchParams.get("search") as string)) {
               {
                 return (
-                  <SurahButton
-                    key={surah.id}
-                    {...surah}
-                    {...surahButtonProps}
+                  <ChapterButton
+                    key={chapter.id}
+                    {...chapter}
+                    {...chapterButtonProps}
                     onClick={() => sheetCloseRef.current?.click()}
                   />
                 );
               }
             }
           });
-        return surahs.map((surah) => (
-          <SurahButton
-            key={surah.id}
-            {...surah}
-            {...surahButtonProps}
+        return chapters.map((chapter) => (
+          <ChapterButton
+            key={chapter.id}
+            {...chapter}
+            {...chapterButtonProps}
             onClick={() => sheetCloseRef.current?.click()}
           />
         ));
@@ -92,7 +93,7 @@ export default function List({
           </h2>
         );
     }
-  }, [bookmarks, currentFilter, searchParams, sheet, surahButtonProps]);
+  }, [bookmarks, currentFilter, searchParams, sheet, chapterButtonProps]);
 
   return sheet ? (
     <Sheet>
@@ -124,7 +125,7 @@ export default function List({
       className={`${container ? "container lg:w-[70%] xl:w-[60%]" : ""} flex h-full flex-col gap-3`}
     >
       <div
-        className={`flex flex-col items-center gap-3 sm:h-10 sm:flex-row ${currentFilter == "surahs" ? "justify-between" : "justify-end pt-[52px] sm:pt-0"}`}
+        className={`flex flex-col items-center gap-3 sm:h-10 sm:flex-row ${currentFilter == "chapters" ? "justify-between" : "justify-end pt-[52px] sm:pt-0"}`}
       >
         <Search />
 

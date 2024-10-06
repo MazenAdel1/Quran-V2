@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <Suspense>
+    <Suspense fallback={<h2>تحميل البيانات...</h2>}>
       <List />
     </Suspense>
   );

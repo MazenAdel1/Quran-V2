@@ -27,7 +27,7 @@ export default function PageNavigate({
       <Image
         src={arrow}
         alt="arrow"
-        className={`w-7 sm:w-9 ${direction === "left" ? "rotate-180" : ""}`}
+        className={`w-7 sm:w-9 ${direction === "left" ? "rotate-180" : ""} invert-[1] dark:invert-0`}
       />
     </Link>
   );

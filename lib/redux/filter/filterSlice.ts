@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 type FilterProps = {
-  id: "surahs" | "juzs" | "bookmarks";
+  id: "chapters" | "juzs" | "bookmarks";
   title: "سور" | "أجزاء" | "مرجعيات";
 };
 
@@ -14,7 +14,7 @@ type Props = {
 
 const initialState: { value: Props } = {
   value: [
-    { id: "surahs", title: "سور", active: true },
+    { id: "chapters", title: "سور", active: true },
     { id: "juzs", title: "أجزاء", active: false },
     { id: "bookmarks", title: "مرجعيات", active: false },
   ],

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Fragment, useRef } from "react";
-import SurahTitle from "./SurahTitle";
+import ChapterTitle from "./ChapterTitle";
 
 type AyahProps = {
   text: string;
@@ -25,7 +25,7 @@ export default function Ayahs({ ayahs, page }: any) {
       {ayahs.map((ayah: AyahProps) =>
         ayah.numberInSurah === 1 ? (
           <Fragment key={ayah.numberInSurah}>
-            <SurahTitle surahName={ayah.surah.name} />
+            <ChapterTitle chapterTitle={ayah.surah.name} />
             {ayah.text.includes("ٱللَّهِ ٱلرَّحۡمَـٰنِ ٱلرَّحِیمِ") &&
             page !== 1 ? (
               <>

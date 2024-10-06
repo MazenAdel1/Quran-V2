@@ -1,4 +1,4 @@
-import { buttonProps } from "@/types/SurahTypes";
+import { buttonProps } from "@/types/ChapterTypes";
 
 export type JuzsProps = {
   id: number;
@@ -14,7 +14,7 @@ export type ListProps = {
   container?: boolean;
   grid?: number;
   filterAndSearchLayout?: "row" | "col";
-  surahButtonProps?: buttonProps;
+  chapterButtonProps?: buttonProps;
   sheet?: boolean;
   sheetTriggerIcon?: any;
 };
