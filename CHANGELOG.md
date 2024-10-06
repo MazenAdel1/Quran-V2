@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.2.3...v0.2.4) (2024-10-06)
+
+
+### Refactor
+
+* change static data from TS file to JSON ([027b416](https://github.com/USERNAME/REPOSITORY_NAME/commits027b416e6a653ec674eb69a28f050a2bbecc45ed))
+
 ### [0.2.3](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.2.2...v0.2.3) (2024-07-19)
 
 
