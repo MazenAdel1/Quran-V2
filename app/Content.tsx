@@ -3,7 +3,13 @@
 import Glow from "@/components/layout/Glow";
 import Header from "@/components/header/Header";
 import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 // import { verses } from "@/data/ayahs";
+
+function SearchParamsWrapper({ children }: { children: React.ReactNode }) {
+  useSearchParams();
+  return <>{children}</>;
+}
 
 export default function Content({
   children,
@@ -67,8 +73,8 @@ export default function Content({
         <Glow />
         <Header fixed={isScrolled} ref={headerRef} />
         <div className={`flex flex-1`} style={{ paddingTop: paddingTop }}>
-          <Suspense fallback={<h1 className="text-3xl">Loading</h1>}>
-            {children}
+          <Suspense fallback={<h1 className="text-3xl">تحميل البيانات...</h1>}>
+            <SearchParamsWrapper>{children}</SearchParamsWrapper>
           </Suspense>
         </div>
       </body>

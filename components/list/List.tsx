@@ -14,7 +14,7 @@ import { useSearchParams } from "next/navigation";
 import chapters from "@/data/chapters.json";
 import juzs from "@/data/juzs.json";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
-import { useMemo, useRef } from "react";
+import { Suspense, useMemo, useRef } from "react";
 
 export default function List({
   container = true,

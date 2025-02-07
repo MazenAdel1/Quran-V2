@@ -4,7 +4,7 @@ import Settings from "./Settings";
 import { useParams } from "next/navigation";
 import List from "../list/List";
 import { BookOpen } from "lucide-react";
-import React, { forwardRef } from "react";
+import React, { forwardRef, Suspense } from "react";
 
 const Header = forwardRef<HTMLDivElement, { fixed: boolean }>(
   ({ fixed }, ref) => {
@@ -18,19 +18,21 @@ const Header = forwardRef<HTMLDivElement, { fixed: boolean }>(
           <Logo />
         </Link>
         <div className="flex items-center gap-6 sm:gap-10">
-          {params == "page" && (
-            <List
-              sheet
-              chapterButtonProps={{ idExist: false, versesCountExist: false }}
-              sheetTriggerIcon={
-                <BookOpen
-                  className="text-black dark:text-white"
-                  size={"2rem"}
-                />
-              }
-              filterAndSearchLayout="col"
-            />
-          )}
+          <Suspense fallback={<h2>تحميل البيانات...</h2>}>
+            {params == "page" && (
+              <List
+                sheet
+                chapterButtonProps={{ idExist: false, versesCountExist: false }}
+                sheetTriggerIcon={
+                  <BookOpen
+                    className="text-black dark:text-white"
+                    size={"2rem"}
+                  />
+                }
+                filterAndSearchLayout="col"
+              />
+            )}
+          </Suspense>
           <Settings />
         </div>
       </header>
