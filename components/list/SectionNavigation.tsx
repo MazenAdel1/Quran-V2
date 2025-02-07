@@ -13,9 +13,11 @@ import {
 export default function SectionNavigation() {
   const SECTIONS = [
     { title: "قراءة", available: true },
-    { title: "استماع", available: false },
+    { title: "استماع", available: true },
     { title: "تعلم", available: false },
   ];
+
+  // TODO make the listen section
   return (
     <>
       <nav className="flex justify-end lg:absolute lg:-right-[20%] lg:h-full">

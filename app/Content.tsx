@@ -2,7 +2,7 @@
 
 import Glow from "@/components/layout/Glow";
 import Header from "@/components/header/Header";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react";
 // import { verses } from "@/data/ayahs";
 
 export default function Content({
@@ -67,7 +67,9 @@ export default function Content({
         <Glow />
         <Header fixed={isScrolled} ref={headerRef} />
         <div className={`flex flex-1`} style={{ paddingTop: paddingTop }}>
-          {children}
+          <Suspense fallback={<h1 className="text-3xl">Loading</h1>}>
+            {children}
+          </Suspense>
         </div>
       </body>
     </html>

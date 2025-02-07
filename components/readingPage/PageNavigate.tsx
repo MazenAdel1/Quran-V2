@@ -14,7 +14,7 @@ export default function PageNavigate({
   return (
     <Link
       href={href}
-      prefetch={false}
+      prefetch={true}
       className={cn(
         buttonVariants({
           variant: "navy",
