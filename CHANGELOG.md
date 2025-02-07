@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.3.1...v0.3.2) (2025-02-07)
+
+
+### Bug Fixes
+
+* fix useSearchParams suspense error ([ef24bec](https://github.com/USERNAME/REPOSITORY_NAME/commitsef24bec0d5ebfbdd7c31d5b59ebebfcab70da122))
+
 ### [0.3.1](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.3.0...v0.3.1) (2025-02-07)
 
 
