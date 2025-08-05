@@ -4,8 +4,8 @@ import Content from "./Content";
 import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
-  title: "Quran",
-  description: "Modern Quran APP For Reading, Learning, and Listening",
+  title: "قرآن",
+  description: "برنامج عصري لقراءة واستماع القرآن الكريم",
 };
 
 export default function RootLayout({
