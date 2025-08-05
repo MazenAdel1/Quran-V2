@@ -1,6 +1,94 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin 'tailwind-scrollbar';
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+.test {
+  color: #111a2d;
+}
+
+@theme {
+  --breakpoint-xs: 450px;
+  --breakpoint-2xl: 1400px;
+
+  --font-camel: camel;
+  --font-amiri: amiri;
+
+  --color-white: #e9eaec;
+  /* --color-dark-navy: #0e1420; */
+  --color-dark-navy: #0f1727;
+  --color-navy: #121c34;
+  --color-light-navy: #1b2b52;
+  --color-orange: #f09d51;
+  --color-dark-orange: #ce690c;
+  --color-secondary: #e1e0d6;
+  --color-accent: #f06542;
+  --color-light-white: #fff7f0;
+  --color-light-orange: #efdccb;
+  --color-light-dark-orange: #fbc494;
+
+  --background-color-white: #e9eaec;
+  --background-color-dark-navy: #0e1420;
+  --background-color-navy: #121c34;
+  --background-color-light-navy: #1b2b52;
+  --background-color-orange: #f09d51;
+  --background-color-dark-orange: #ce690c;
+  --background-color-secondary: #e1e0d6;
+  --background-color-accent: #f06542;
+  --background-color-light-white: #fff7f0;
+  --background-color-light-orange: #efdccb;
+  --background-color-light-dark-orange: #fbc494;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (width >= --theme(--breakpoint-xs)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 @font-face {
   font-family: "camel";
@@ -62,5 +150,5 @@
 }
 
 .list-button {
-  @apply relative flex h-full w-full items-center justify-between overflow-hidden text-wrap rounded-lg text-3xl;
+  @apply relative flex h-full w-full items-center justify-between overflow-hidden rounded-lg text-3xl text-wrap;
 }
