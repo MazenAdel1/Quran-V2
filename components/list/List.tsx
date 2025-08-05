@@ -14,7 +14,7 @@ import { useSearchParams } from "next/navigation";
 import chapters from "@/data/chapters.json";
 import juzs from "@/data/juzs.json";
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
-import { Suspense, useMemo, useRef } from "react";
+import { useMemo, useRef } from "react";
 
 export default function List({
   container = true,
@@ -87,7 +87,7 @@ export default function List({
             .reverse()
         ) : (
           <h2
-            className={`absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center ${sheet ? "text-2xl" : "text-2xl sm:text-3xl"} text-black dark:text-white`}
+            className={`absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center ${sheet ? "text-2xl" : "text-2xl sm:text-3xl"} text-black dark:text-white`}
           >
             ليس لديك مرجعيات
           </h2>
@@ -101,7 +101,7 @@ export default function List({
         {sheetTriggerIcon}
       </SheetTrigger>
       <SheetContent
-        className={`flex h-full flex-col gap-3 bg-light-orange pt-14 scrollbar scrollbar-track-light-white scrollbar-thumb-black dark:bg-navy dark:scrollbar-track-light-navy dark:scrollbar-thumb-white`}
+        className={`bg-light-orange scrollbar scrollbar-track-light-white scrollbar-thumb-black dark:bg-navy dark:scrollbar-track-light-navy dark:scrollbar-thumb-white flex h-full flex-col gap-3 pt-14`}
         side={"left"}
       >
         <SheetClose ref={sheetCloseRef} className="hidden"></SheetClose>
@@ -113,7 +113,7 @@ export default function List({
         </div>
         <div className="relative flex h-max flex-col gap-3 lg:block">
           <div
-            className={`grid min-h-20 flex-1 grid-cols-1 place-content-start gap-3 rounded-t-lg scrollbar-thin`}
+            className={`scrollbar-thin grid min-h-20 flex-1 grid-cols-1 place-content-start gap-3 rounded-t-lg`}
           >
             {Data}
           </div>
@@ -134,7 +134,7 @@ export default function List({
       <div className="relative flex h-max flex-col gap-3 lg:block">
         <SectionNavigation />
         <div
-          className={`relative grid min-h-20 flex-1 grid-cols-1 place-content-start gap-2 rounded-t-lg bg-light-orange p-2 scrollbar-thin dark:bg-navy sm:grid-cols-2 sm:gap-5 sm:p-5 md:grid-cols-3`}
+          className={`bg-light-orange scrollbar-thin dark:bg-navy relative grid min-h-20 flex-1 grid-cols-1 place-content-start gap-2 rounded-t-lg p-2 sm:grid-cols-2 sm:gap-5 sm:p-5 md:grid-cols-3`}
         >
           {Data}
         </div>
