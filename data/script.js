@@ -1,4 +1,5 @@
-const fs = require("node:fs");
+const fs = require("fs");
+const path = require("path");
 
 async function getChapters() {
   const R = await fetch(`https://api.quran.com/api/v4/chapters`);
@@ -13,18 +14,18 @@ async function getChapters() {
     bismillahPre: item.bismillah_pre,
   }));
 
-  fs.appendFile("./data.ts", JSON.stringify(data), (err) => {
+  fs.appendFile("./data/chapters.ts", JSON.stringify(data), (err) => {
     if (err) {
       console.error(err);
     }
   });
 }
 
-getChapters();
+// getChapters();
 
-async function getAyahs() {
+async function getVerses() {
   const DATA = [];
-  for (let i = 1; i <= 604; i++) {
+  for (let i = 1; i <= 604; ++i) {
     try {
       const res = await fetch(`https://api.alquran.cloud/v1/page/${i}`);
       if (!res.ok) {
@@ -35,33 +36,54 @@ async function getAyahs() {
       const surahs = Object.values(D.data.surahs).map((surah) => ({
         name: surah.name,
         number: surah.number,
-        numberOfAyahs: surah.numberOfAyahs,
+        numberOfVerses: surah.numberOfVerses,
         revelationType: surah.revelationType,
       }));
 
-      const ayahs = D.data.ayahs.map((ayah) => ({
-        numberInSurah: ayah.numberInSurah,
-        surah: {
-          name: ayah.surah.name,
+      const verses = D.data.ayahs.map(
+        /*async*/ (verse) => {
+          const verseKey = `${verse.surah.number}:${verse.numberInSurah}`;
+          // const tafsirFetch = await fetch(
+          //   `https://api.quran.com/api/v4/tafsirs/16/by_ayah/${verse.surah.number}:${verse.numberInSurah}?language=ar`,
+          // );
+          // const { tafsir } = await tafsirFetch.json();
+          return {
+            numberInSurah: verse.numberInSurah,
+            surah: {
+              name: verse.surah.name,
+              number: verse.surah.number,
+            },
+            text: verse.text,
+            key: verseKey,
+            // tafsir,
+          };
         },
-        text: ayah.text,
-      }));
+      );
 
-      DATA.push({ surahs, ayahs });
+      DATA.push({ surahs, verses });
     } catch (err) {
       console.error(err);
     }
   }
 
-  fs.appendFile(
-    "./data/ayahs.ts",
-    `export const ayahs = ${JSON.stringify(DATA)}`,
+  const dir = path.join(__dirname, "new");
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+
+  fs.writeFile(
+    path.join(dir, "verses.json"),
+    JSON.stringify(DATA, null, 2),
     (err) => {
       if (err) {
         console.error(err);
+      } else {
+        console.log("Saved verses.json successfully!");
       }
     },
   );
 }
 
-getAyahs();
+getVerses();
+
+// edit the script so it generates json and add verse key
