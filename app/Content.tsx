@@ -69,7 +69,7 @@ export default function Content({
 
   return (
     <html lang="en" dir="rtl" className="dark scrollbar" ref={htmlRef}>
-      <body className="relative flex min-h-dvh flex-col gap-8 overflow-x-hidden bg-light-white font-camel dark:bg-dark-navy">
+      <body className="bg-light-white font-camel dark:bg-dark-navy relative flex min-h-dvh flex-col gap-8 overflow-x-hidden">
         <Glow />
         <Header fixed={isScrolled} ref={headerRef} />
         <div className={`flex flex-1`} style={{ paddingTop: paddingTop }}>
