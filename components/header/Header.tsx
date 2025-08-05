@@ -11,7 +11,7 @@ const Header = forwardRef<HTMLDivElement, { fixed: boolean }>(
     const params = Object.keys(useParams())[0];
     return (
       <header
-        className={`z-50 flex w-full items-center justify-between p-1 transition-all sm:p-2 md:p-5 ${fixed ? "fixed top-0 backdrop-blur" : "-top-full"}`}
+        className={`z-50 flex w-full items-center justify-between p-1 transition-all sm:p-2 md:p-5 ${fixed ? "fixed top-0 backdrop-blur-sm" : "-top-full"}`}
         ref={ref}
       >
         <Link href={"/"} className="scale-75 sm:scale-100">

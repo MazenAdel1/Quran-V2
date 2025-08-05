@@ -53,7 +53,7 @@ export default function Search() {
           placeholder="البحث..."
           ref={inputRef}
           defaultValue={searchParams!}
-          className="bg-light-dark-orange w-full rounded-full px-4 py-2 text-black outline-none ring-1 ring-[#ffae67] placeholder:text-black placeholder:opacity-50 dark:bg-light-navy dark:text-primary-white dark:ring-navy placeholder:dark:text-white"
+          className="bg-light-dark-orange w-full rounded-full px-4 py-2 text-black outline-hidden ring-1 ring-[#ffae67] placeholder:text-black placeholder:opacity-50 dark:bg-light-navy dark:text-primary-white dark:ring-navy dark:placeholder:text-white"
         />
       </form>
     )
