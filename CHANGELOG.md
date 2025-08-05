@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.3.2...v0.4.0) (2025-08-05)
+
+
+### Features
+
+* separate verse component and add tafsir ([d97edbd](https://github.com/USERNAME/REPOSITORY_NAME/commitsd97edbda20fd490f557f67038ad7fec93647b39d))
+
+
+### Bug Fixes
+
+* pass a param for useRef ([c548315](https://github.com/USERNAME/REPOSITORY_NAME/commitsc548315908eb7e0b75e7a8d7d641ff74753f8eca))
+
+
+### Refactor
+
+* change 'ayah' to 'verse' ([37f16d6](https://github.com/USERNAME/REPOSITORY_NAME/commits37f16d6905ce89a6a8c3741239b36c61145d602f))
+* change script to add verse key ([8540f9f](https://github.com/USERNAME/REPOSITORY_NAME/commits8540f9fd81a8f6a75f7135045cebc0410f278bc7))
+* change title and description to arabic ([dc96adc](https://github.com/USERNAME/REPOSITORY_NAME/commitsdc96adc5352c03ad4bdcad3b0b3c4cc1fef5cf55))
+* separate verse props ([5656def](https://github.com/USERNAME/REPOSITORY_NAME/commits5656deff5cde8bcacad5fc7cbe59bcb3eb15bd43))
+* update Next.js & shadcn & tailwind packages ([e3dbd71](https://github.com/USERNAME/REPOSITORY_NAME/commitse3dbd71554cb25117f3c6f667b478f5a172c07e4))
+
 ### [0.3.2](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.3.1...v0.3.2) (2025-02-07)
 
 
