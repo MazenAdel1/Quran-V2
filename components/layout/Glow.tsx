@@ -1,5 +1,8 @@
 export default function Glow() {
   return (
-    <div className="fixed -left-[200px] -top-10 -z-999 size-[500px] rounded-full bg-orange opacity-20 blur-[150px] dark:bg-orange dark:opacity-10"></div>
+    <>
+      <div className="bg-orange fixed -top-12 -left-24 -z-999 h-52 w-3/4 rounded-full opacity-60 blur-[150px] lg:w-5xl dark:opacity-30" />
+      <div className="bg-orange fixed -right-12 -bottom-20 -z-999 h-32 w-1/2 rounded-full opacity-70 blur-[120px] lg:bottom-12 lg:w-3xl dark:opacity-35 dark:blur-[130px]" />
+    </>
   );
 }

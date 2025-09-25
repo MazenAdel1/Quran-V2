@@ -8,4 +8,5 @@ export type VerseProps = {
     numberOfAyahs: number;
   };
   key: string;
+  id: number;
 };

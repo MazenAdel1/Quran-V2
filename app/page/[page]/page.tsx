@@ -1,7 +1,7 @@
 import PageNavigate from "@/components/readingPage/PageNavigate";
 import PageNumber from "@/components/readingPage/PageNumber";
 import SaveBookmark from "@/components/readingPage/SaveBookmark";
-import { removeTashkeel } from "@/lib/utils";
+import { normalizeArabic } from "@/lib/utils";
 import Verses from "@/components/readingPage/Verses";
 import versesData from "@/data/new/verses.json";
 
@@ -36,7 +36,7 @@ export default async function Page({ params }: { params: Params }) {
         <span className="absolute top-4 left-28 block text-sm text-black sm:top-5 sm:left-36 sm:text-lg md:top-8 md:left-40 dark:text-white">
           {chaptersNames.map(
             (chapterName, index) =>
-              removeTashkeel(chapterName) +
+              normalizeArabic(chapterName) +
               (index + 1 < chaptersNames.length ? " | " : ""),
           )}
         </span>

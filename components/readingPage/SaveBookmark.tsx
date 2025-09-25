@@ -46,14 +46,14 @@ export default function SaveBookmark({ page }: { page: number }) {
   return (
     <button
       onClick={handleClick}
-      className="absolute left-2 top-[70px] h-6 w-6 sm:left-3 sm:top-20 md:left-6 md:top-24"
+      className="absolute top-[70px] left-2 h-6 w-6 cursor-pointer sm:top-20 sm:left-3 md:top-24 md:left-6"
     >
       <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M2 2c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v18l-8-4-8 4V2z"
           className="fill-black transition-all dark:fill-white"
           ref={pathRef}
-        ></path>
+        />
       </svg>
     </button>
   );

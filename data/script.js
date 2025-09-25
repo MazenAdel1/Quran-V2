@@ -48,6 +48,7 @@ async function getVerses() {
           // );
           // const { tafsir } = await tafsirFetch.json();
           return {
+            id: verse.number,
             numberInSurah: verse.numberInSurah,
             surah: {
               name: verse.surah.name,
@@ -84,6 +85,35 @@ async function getVerses() {
   );
 }
 
-getVerses();
+// getVerses();
 
-// edit the script so it generates json and add verse key
+const versesData = require("./new/verses.json");
+
+function addVersesIds() {
+  let verseCounter = 0;
+  for (let i = 0; i < 604; i++) {
+    for (let j = 0; j < versesData[i].verses.length; j++) {
+      delete versesData[i].verses[j].verseId;
+      versesData[i].verses[j].id = ++verseCounter;
+    }
+  }
+
+  const dir = path.join(__dirname, "new");
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir);
+  }
+
+  fs.writeFile(
+    path.join(dir, "verses.json"),
+    JSON.stringify(versesData, null, 2),
+    (err) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log("Saved verses.json successfully!");
+      }
+    },
+  );
+}
+
+addVersesIds();

@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import filter from "./filter/filterSlice";
 import bookmarks from "./bookmarks/bookmarksSlice";
+import theme from "./theme/themeSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       filter,
       bookmarks,
+      theme,
     },
   });
 };

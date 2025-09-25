@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import List from "../list/List";
 import { BookOpen } from "lucide-react";
 import React, { forwardRef, Suspense } from "react";
+import VerseSearch from "./VerseSearch";
 
 const Header = forwardRef<HTMLDivElement, { fixed: boolean }>(
   ({ fixed }, ref) => {
@@ -17,8 +18,11 @@ const Header = forwardRef<HTMLDivElement, { fixed: boolean }>(
         <Link href={"/"} className="scale-75 sm:scale-100">
           <Logo />
         </Link>
+        <VerseSearch />
         <div className="flex items-center gap-6 sm:gap-10">
-          <Suspense fallback={<h2>تحميل البيانات...</h2>}>
+          <Suspense
+            fallback={<h2 className="dark:text-white">تحميل البيانات...</h2>}
+          >
             {params == "page" && (
               <List
                 sheet
