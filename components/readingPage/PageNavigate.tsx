@@ -18,9 +18,7 @@ export default function PageNavigate({
       className={cn(
         buttonVariants({
           variant: "navy",
-          padding: "md",
-          rounded: "md",
-          className: `fixed ${`${direction}-0`} top-1/2 -translate-y-1/2 ${direction == "left" ? `rounded-l-none` : "rounded-r-none"} px-1 opacity-65 transition-opacity hover:opacity-100`,
+          className: `fixed ${`${direction}-0`} top-1/2 -translate-y-1/2 ${direction == "left" ? `rounded-l-none rounded-r-full` : "rounded-l-full rounded-r-none"} h-1/2 px-0.5 opacity-40 transition-opacity hover:opacity-100`,
         }),
       )}
     >
