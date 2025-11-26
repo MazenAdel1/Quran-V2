@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.1](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.5.0...v0.5.1) (2025-11-26)
+
+
+### Bug Fixes
+
+* fix small screen overflow ([6f7eabf](https://github.com/USERNAME/REPOSITORY_NAME/commits6f7eabf9f1c5d0fb05398dc528d195dc40731984))
+
+
+### Refactor
+
+* enhance small peices of UI ([da71b7a](https://github.com/USERNAME/REPOSITORY_NAME/commitsda71b7adf1f697a9a1c9da1a38a906276b3a8441))
+
 ## [0.5.0](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.4.0...v0.5.0) (2025-09-25)
 
 
