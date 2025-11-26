@@ -25,7 +25,7 @@ export default function Filter({ fullWidth }: { fullWidth: boolean }) {
               ),
             )
           }
-          className={`${fullWidth ? "min-w-12" : "min-w-20"} ${active ? "bg-dark-orange" : ""}`}
+          className={`${fullWidth ? "min-w-12" : "min-w-16 sm:min-w-20"} ${active ? "bg-dark-orange" : ""}`}
         >
           {title}
         </Button>

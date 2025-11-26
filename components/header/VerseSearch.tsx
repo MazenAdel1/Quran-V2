@@ -77,17 +77,17 @@ export default function VerseSearch() {
   return (
     <>
       <form
-        className="flex h-fit items-center"
+        className="flex h-fit w-full max-w-xs items-center sm:w-sm"
         onSubmit={submitForm}
         ref={formRef}
       >
         <input
           type="search"
           placeholder="البحث عن آية..."
-          className="border-orange focus:outline-dark-orange rounded-r-md border px-2 py-1 backdrop-blur-md focus:outline dark:text-white"
+          className="border-orange focus:outline-dark-orange h-[34px] w-full min-w-0 flex-1 rounded-r-md border-2 px-2 py-1 backdrop-blur-md focus:h-[32px] focus:outline dark:text-white"
           ref={inputRef}
         />
-        <Button className="h-[34px] rounded-r-none" variant={"orange"}>
+        <Button className="h-[34px] shrink-0 rounded-r-none" variant={"orange"}>
           <Search size={16} />
         </Button>
       </form>
