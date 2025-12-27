@@ -1,8 +1,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { buttonVariants } from "../ui/button";
-import Image from "next/image";
-import arrow from "@/icons/arrow.svg";
+import { ArrowBigRight } from "lucide-react";
 
 export default function PageNavigate({
   href,
@@ -22,10 +21,11 @@ export default function PageNavigate({
         }),
       )}
     >
-      <Image
-        src={arrow}
-        alt="arrow"
-        className={`w-7 sm:w-9 ${direction === "left" ? "rotate-180" : ""} invert-[1] dark:invert-0`}
+      <ArrowBigRight
+        className={cn(
+          `size-5 sm:size-7`,
+          direction === "left" ? "rotate-180" : "",
+        )}
       />
     </Link>
   );
