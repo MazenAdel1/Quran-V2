@@ -18,13 +18,33 @@ export function normalizeArabic(word: string) {
     .replace(/ؤ/g, "و");
 }
 
+import versesData from "@/data/verses.json";
+
+export function verseSearch(query: string): Promise<VerseProps[]> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const normalizedQuery = normalizeArabic(query);
+      const results: VerseProps[] = [];
+
+      versesData.forEach((page) => {
+        page.verses.forEach((verse) => {
+          const normalizedVerseText = normalizeArabic(verse.text);
+          if (normalizedVerseText.includes(normalizedQuery)) {
+            results.push(verse as VerseProps);
+          }
+        });
+      });
+
+      resolve(results);
+    }, 0);
+  });
+}
+
 import { VerseProps } from "@/types/VerseTypes";
 
 export function trimVerse(verse: VerseProps, length: number) {
   return `${verse.text.slice(0, length)} ${verse.text.length > length ? "..." : ""} ${` \u06DD${verse.numberInSurah}`}`;
 }
-
-import versesData from "@/data/new/verses.json";
 
 export function getVersePageInfoFromId(verseId: number) {
   let pageNumber;

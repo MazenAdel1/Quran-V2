@@ -1,78 +1,55 @@
 "use client";
 
-import { Loader, Search } from "lucide-react";
+import { Loader2, Search } from "lucide-react";
 import { Button } from "../ui/button";
-import {
-  FormEventHandler,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { FormEventHandler, useRef, useState, useTransition } from "react";
 import { Dialog } from "@radix-ui/react-dialog";
 import { DialogClose, DialogContent, DialogTrigger } from "../ui/dialog";
 import Link from "next/link";
+import { VerseProps } from "@/types/VerseTypes";
+import { getVersePageInfoFromId, verseSearch } from "@/lib/utils";
+
+const CHUNK_SIZE = 50;
 
 export default function VerseSearch() {
   const inputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  type SearchResult = {
-    total_results: number;
-    results: any[];
-    next_results: SearchResult;
+  const [data, setData] = useState<VerseProps[] | undefined>(undefined);
+  const [visibleCount, setVisibleCount] = useState(CHUNK_SIZE);
+  const [isPending, startTransition] = useTransition();
+
+  const search = async (query: string) => {
+    const results = await verseSearch(query);
+    startTransition(() => {
+      setData(results);
+      setVisibleCount(CHUNK_SIZE);
+    });
   };
 
-  const [data, setData] = useState<SearchResult | undefined>(undefined);
-  const [page, setPage] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (!container || !data) return;
 
-  const search = useCallback(
-    async (query: string) => {
-      setIsLoading(true);
+    const { scrollTop, scrollHeight, clientHeight } = container;
 
-      const searchResults = (
-        await fetch(
-          `https://api.qurani.ai/gw/qh/v1/search/${query}?language=ar&editionIdentifier=quran-simple&surahNumber=1&exactSearch=true&limit=10&offset=${(page - 1) * 10}`,
-        ).then((res) => res.json())
-      ).data;
-
-      const nextSearchResults = (
-        await fetch(
-          `https://api.qurani.ai/gw/qh/v1/search/${query}?language=ar&editionIdentifier=quran-simple&surahNumber=1&exactSearch=true&limit=10&offset=${page * 10}`,
-        ).then((res) => res.json())
-      ).data;
-
-      setData({
-        total_results: searchResults?.count,
-        results: searchResults?.ayahs,
-        next_results: {
-          total_results: nextSearchResults?.count,
-          results: nextSearchResults?.ayahs,
-          next_results: {} as SearchResult,
-        },
-      });
-
-      setIsLoading(false);
-    },
-    [page],
-  );
+    if (scrollHeight - scrollTop - clientHeight < 100) {
+      setVisibleCount((prev) => Math.min(prev + CHUNK_SIZE, data.length));
+    }
+  };
 
   const submitForm: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     const query = inputRef.current?.value;
     if (query) {
+      setData(undefined);
       triggerRef.current?.click();
-      setPage(1);
       await search(query);
     }
   };
-
-  useEffect(() => {
-    (async () => await search(inputRef.current?.value || ""))();
-  }, [page, search]);
 
   return (
     <>
@@ -93,51 +70,49 @@ export default function VerseSearch() {
       </form>
       <Dialog>
         <DialogTrigger className="sr-only" ref={triggerRef} />
-        <DialogContent className="pt-10">
-          {isLoading ? (
+        <DialogContent
+          className="max-h-[90dvh] pt-10"
+          ref={scrollContainerRef}
+          onScroll={handleScroll}
+        >
+          <DialogClose className="sr-only" ref={closeRef} />
+          {isPending || !data ? (
             <div className="flex justify-center">
-              <Loader className="animate-spin text-center dark:text-white" />
+              <Loader2 className="animate-spin text-center dark:text-white" />
             </div>
-          ) : data ? (
+          ) : (
             <>
-              <DialogClose className="sr-only" ref={closeRef} />
               <span className="text-center dark:text-white">
-                عدد النتائج الحالية: {data?.total_results}
+                عدد النتائج الحالية: {data.length}
               </span>
-              {data?.results?.map((verse, verseIndex) => {
-                return (
-                  <Link
-                    href={`/page/${verse.page}?highlight=${verse.number}`}
-                    className="font-amiri group text-lg leading-9 dark:text-white"
-                    key={verse.number}
-                    onClick={() => {
-                      closeRef.current?.click();
-                      formRef.current?.reset();
-                    }}
-                  >
-                    {verseIndex + 1} - {<span>{verse.text}</span>}{" "}
-                    {`\u06DD${verse.numberInSurah}`}{" "}
-                    <span className="text-sm">[{verse.surah.name}]</span>
-                  </Link>
-                );
-              })}
-              <div className="flex w-full justify-between gap-2 *:flex-1">
-                <Button
-                  onClick={() => setPage((prev) => prev - 1)}
-                  disabled={page === 1}
-                >
-                  السابق
-                </Button>
-                <Button
-                  onClick={() => setPage((prev) => prev + 1)}
-                  disabled={data.next_results?.total_results === 0}
-                >
-                  التالي
-                </Button>
+              <div className="flex flex-col gap-2 overflow-y-auto">
+                {data.slice(0, visibleCount).map((verse, verseIndex) => {
+                  return (
+                    <Link
+                      href={`/page/${getVersePageInfoFromId(verse.id).pageNumber}?highlight=${verse.id}`}
+                      className="font-amiri group text-lg leading-9 dark:text-white"
+                      key={verse.id}
+                      onClick={() => {
+                        closeRef.current?.click();
+                        formRef.current?.reset();
+                      }}
+                    >
+                      {verseIndex + 1} - {<span>{verse.text}</span>}{" "}
+                      {`\u06DD${verse.numberInSurah}`}{" "}
+                      <span className="text-sm">[{verse.surah.name}]</span>
+                    </Link>
+                  );
+                })}
+                {visibleCount < data.length && (
+                  <div className="flex justify-center py-2">
+                    <Loader2
+                      className="animate-spin dark:text-white"
+                      size={20}
+                    />
+                  </div>
+                )}
               </div>
             </>
-          ) : (
-            <h1>هناك خطأ ما</h1>
           )}
         </DialogContent>
       </Dialog>

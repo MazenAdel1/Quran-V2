@@ -3,7 +3,7 @@ import PageNumber from "@/components/readingPage/PageNumber";
 import SaveBookmark from "@/components/readingPage/SaveBookmark";
 import { normalizeArabic } from "@/lib/utils";
 import Verses from "@/components/readingPage/Verses";
-import versesData from "@/data/new/verses.json";
+import versesData from "@/data/verses.json";
 
 type Params = Promise<{ page: number }>;
 
