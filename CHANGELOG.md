@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.5.1...v0.6.0) (2025-12-27)
+
+
+### Refactor
+
+* remove new directory ([f80dae3](https://github.com/USERNAME/REPOSITORY_NAME/commitsf80dae37f90cf3f0a403c1a2f464e08849f4333f))
+* remove svgs and use only lucide react ([286cc03](https://github.com/USERNAME/REPOSITORY_NAME/commits286cc03b1c3d059c2d21eada28d4a7c86fc5829a))
+
 ### [0.5.1](https://github.com/USERNAME/REPOSITORY_NAME/compare/v0.5.0...v0.5.1) (2025-11-26)
 
 
